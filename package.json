@@ -1,7 +1,7 @@
 {
   "name": "circleci-env",
   "main": "index.js",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Configure CircleCI with an environment variable",
   "license": "MIT",
   "repository": "bendrucker/circleci-env",
