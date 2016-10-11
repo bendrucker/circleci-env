@@ -15,7 +15,7 @@ $ npm install --save circleci-env
 ```js
 var env = require('circleci-env')
 
-env({
+env.set({
   username: 'bendrucker',
   project: 'circleci-aws',
   circle_token: token,
@@ -29,9 +29,11 @@ env({
 
 ## API
 
-#### `env(data)` -> `promise`
+#### `env.get(data)` -> `promise`
+#### `env.set(data)` -> `promise`
+#### `env.remove(data)` -> `promise`
 
-Set a new environment variable using the provided data.
+Gets, sets, or removes a new environment variable using the provided data.
 
 
 ##### data
@@ -39,7 +41,7 @@ Set a new environment variable using the provided data.
 *Required*  
 Type: `object`
 
-An object that always must contain `username`, `project`, `circle_token`, plus `name` and `value` for the key and value to be added.
+An object that always must contain `username`, `project`, `circle_token`, and `name` (the key name), plus `value` when calling `set`.
 
 ## License
 

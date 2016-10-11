@@ -6,15 +6,37 @@ const env = require('./')
 const token = process.env.CIRCLE_TOKEN
 
 test(function (t) {
-  return env({
+  return env.set({
     username: 'bendrucker',
     project: 'circleci-aws',
     circle_token: token,
     name: 'FOO',
     value: 'BAR'
   })
-  .then(function (env) {
-    t.equal(env.name, 'FOO')
-    t.ok(env.value.endsWith('R'))
+  .then(() => env.get({
+    username: 'bendrucker',
+    project: 'circleci-aws',
+    circle_token: token,
+    name: 'FOO'
+  }))
+  .then(function (data) {
+    t.equal(data.name, 'FOO')
+    t.ok(data.value.endsWith('R'))
+
+    return env.remove({
+      username: 'bendrucker',
+      project: 'circleci-aws',
+      circle_token: token,
+      name: 'FOO'
+    })
+  })
+  .then(function () {
+    return env.get({
+      username: 'bendrucker',
+      project: 'circleci-aws',
+      circle_token: token,
+      name: 'FOO'
+    })
+    .catch((err) => t.equal(err.statusCode, 404))
   })
 })
