@@ -15,7 +15,7 @@ module.exports = {
 function get (data) {
   assert(data.name, 'key name is required')
 
-  return got.get(createUrl(singleUrl, data), {json: true})
+  return got.get(createUrl(singleUrl, data), { json: true })
     .then((response) => response.body)
 }
 
@@ -33,14 +33,14 @@ function set (data) {
     },
     json: true
   })
-  .then((response) => response.body)
+    .then((response) => response.body)
 }
 
 function remove (data) {
   assert(data.name, 'key name is required')
 
-  return got.delete(createUrl(singleUrl, data), {json: true})
-    .then((response) => assert.equal(response.body.message, 'ok'))
+  return got.delete(createUrl(singleUrl, data), { json: true })
+    .then((response) => assert.strictEqual(response.body.message, 'ok'))
 }
 
 function Circle (fn) {
