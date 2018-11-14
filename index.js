@@ -24,10 +24,10 @@ function set (data) {
   assert(data.value, 'value is required')
 
   return got.post(createUrl(collectionUrl, data), {
-    body: JSON.stringify({
+    body: {
       name: data.name,
       value: data.value
-    }),
+    },
     headers: {
       'content-type': 'application/json'
     },
