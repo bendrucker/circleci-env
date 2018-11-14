@@ -1,4 +1,4 @@
-# circleci-env [![Build Status](https://travis-ci.org/bendrucker/circleci-env.svg?branch=master)](https://travis-ci.org/bendrucker/circleci-env)
+# circleci-env [![Build Status](https://travis-ci.org/bendrucker/circleci-env.svg?branch=master)](https://travis-ci.org/bendrucker/circleci-env) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/circleci-env.svg)](https://greenkeeper.io/)
 
 > Configure CircleCI with an environment variable
 
