@@ -13,30 +13,30 @@ test(function (t) {
     name: 'FOO',
     value: 'BAR'
   })
-  .then(() => env.get({
-    username: 'bendrucker',
-    project: 'circleci-aws',
-    circle_token: token,
-    name: 'FOO'
-  }))
-  .then(function (data) {
-    t.equal(data.name, 'FOO')
-    t.ok(data.value.endsWith('R'))
+    .then(() => env.get({
+      username: 'bendrucker',
+      project: 'circleci-aws',
+      circle_token: token,
+      name: 'FOO'
+    }))
+    .then(function (data) {
+      t.equal(data.name, 'FOO')
+      t.ok(data.value.endsWith('R'))
 
-    return env.remove({
-      username: 'bendrucker',
-      project: 'circleci-aws',
-      circle_token: token,
-      name: 'FOO'
+      return env.remove({
+        username: 'bendrucker',
+        project: 'circleci-aws',
+        circle_token: token,
+        name: 'FOO'
+      })
     })
-  })
-  .then(function () {
-    return env.get({
-      username: 'bendrucker',
-      project: 'circleci-aws',
-      circle_token: token,
-      name: 'FOO'
+    .then(function () {
+      return env.get({
+        username: 'bendrucker',
+        project: 'circleci-aws',
+        circle_token: token,
+        name: 'FOO'
+      })
+        .catch((err) => t.equal(err.statusCode, 404))
     })
-    .catch((err) => t.equal(err.statusCode, 404))
-  })
 })
