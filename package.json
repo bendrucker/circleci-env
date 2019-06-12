@@ -32,6 +32,6 @@
   ],
   "dependencies": {
     "got": "~9.6.0",
-    "snakecase-keys": "~3.0.0"
+    "snakecase-keys": "~3.1.0"
   }
 }
